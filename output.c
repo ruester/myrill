@@ -109,7 +109,7 @@ void draw_status_line(struct gamehandle *myrill)
 **************************/
 int menue(struct gamehandle *myrill)
 {
-    int input, again = 1;
+    int input;
     erase();
     printw("(N)ew Game\n");
     printw("(L)oad Game\n");
@@ -117,31 +117,26 @@ int menue(struct gamehandle *myrill)
     printw("(Q)uit\n");
     printw("What do you want to do?");
     refresh();
-    while (again) {
+    while (1) {
         input = getch();
         switch (input) {
         case 'n':
         case 'N':
-            again = 0;
             return (1);
             break;
         case 'l':
         case 'L':
-            again = 0;
             return (2);
             break;
         case 'h':
         case 'H':
-            again = 0;
             return (3);
             break;
         case 'q':
         case 'Q':
-            again = 0;
             quit_game(myrill);
+            return (0);
             break;
-        default:
-            continue;
         }
     }
     return (0);
