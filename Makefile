@@ -38,10 +38,10 @@ all: build
 build: ${MYRILL_BIN}
 
 myrill: ${MYRILL_OBJ}
-	$(CC) $^ $(LDFLAGS) -o $@
+	$(call quiet-command, $(CC) $^ $(LDFLAGS) -o $@, "LD	$@")
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $<
+	$(call quiet-command, $(CC) $(CFLAGS) -c $<, "CC	$<")
 
 clean:
 	$(call quiet-command, rm -f *.o, "RM	*.o")
